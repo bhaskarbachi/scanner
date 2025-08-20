@@ -1,0 +1,76 @@
+# -----------------------------
+# Go-Specific Ignore Rules
+# -----------------------------
+
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+
+# Test binaries
+*.test
+
+# Output of the `go build` command
+/build/
+*.o
+*.a
+
+# Local cache and temporary files
+*.cache
+*.tmp
+*.log
+
+# Coverage files from `go test`
+*.cover
+coverage.out
+
+
+# -----------------------------
+# OS-Specific Ignore Rules
+# -----------------------------
+
+# Windows system files
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux/Manjaro system files
+*~
+*.bak
+*.swp
+# Ignore .DS_Store files (for macOS users, but might appear on shared projects)
+.DS_Store
+
+# -----------------------------
+# IDE and Editor Ignore Rules
+# -----------------------------
+
+# VSCode project settings
+.vscode/
+*.code-workspace
+
+# Neovim backup, swap, and history files
+*.swp
+*.swo
+*.un~
+.netrwhist
+
+# JetBrains IDEs (if applicable)
+.idea/
+*.iml
+
+# Environment variable files
+.env
+
+# Documentation output
+/docs/
+
+#csv files
+*.csv
+
+#tls files
+*.tls
+
