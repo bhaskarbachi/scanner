@@ -181,8 +181,12 @@ func ec(long bool, singleSymData schemas.SingleSymData, signal_3_6_9, don_5_up, 
 		}
 	}
 
-	//signal trend present
-	if signal_3_6_9[len(singleSymData)-1] < 0 {
+	//signal trend not present
+	no_signal_trend := signal_3_6_9[len(singleSymData)-1] < 0
+	if !long {
+		no_signal_trend = signal_3_6_9[len(singleSymData)-1] > 0
+	}
+	if no_signal_trend {
 		return -1, -1
 	}
 
