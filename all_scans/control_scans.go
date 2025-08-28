@@ -12,6 +12,7 @@ import (
 func scanList() int {
 	fmt.Println("Available Scans:")
 	fmt.Println("1. Recent Donchian 5 Breakouts on Weekly")
+	fmt.Println("2. Recent Donchain cb pattern(x level/bar 5 level/first don bo level)")
 
 	var choice int
 	fmt.Print("Enter the number of the scan you want to perform (or 0 to exit): ")
@@ -77,6 +78,22 @@ func ControlScans(dailyData, weeklyData schemas.AllSymData, dailyIndicators, wee
 			//save it to TLS file
 			writeSymbolsToTLS(fil_long_don5_bo_sym, "don5_bo_l.tls", "ow")
 			writeSymbolsToTLS(fil_short_don5_bo_sym, "don5_bo_s.tls", "ow")
+
+		case 2:
+			long_don5_cb_sym, short_don5_cb_sym := don_patt.Recent_don5_cb(weeklyData, weeklyIndicators)
+
+			//apply ec filter
+			fil_long_don5_cb_sym := ec_filter(long_don5_cb_sym, long_ec_keys)
+			fil_short_don5_cb_sym := ec_filter(short_don5_cb_sym, short_ec_keys)
+
+			fmt.Println("Recent Weekly Donchian 5 CB Patterns")
+			fmt.Println("Long Symbols:", len(fil_long_don5_cb_sym), fil_long_don5_cb_sym)
+			fmt.Println("Short Symbols:", len(fil_short_don5_cb_sym), fil_short_don5_cb_sym)
+
+			//save it to TLS file
+			writeSymbolsToTLS(fil_long_don5_cb_sym, "don5_cb_l.tls", "ow")
+			writeSymbolsToTLS(fil_short_don5_cb_sym, "don5_cb_s.tls", "ow")
+
 		default:
 			fmt.Println("Invalid choice. Please try again.")
 		}
